@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html>
+
+  <head>  </head>
+
+ <body> <form action="" method="POST"> {{ form.csrf_token }} 
+
+	<table border=".5" bgcolor="#FDFEFE" bordercolor="#EBE6F1" cellspacing="5" cellpadding="10">
+
+	<tr> <td colspan="2" align="center"> <b> <font color="red"> YENİ KAYIT FORMU </font></b></td> </tr>
+
+	<tr> <td>{{ form.adı.label }} <br> {{ form.adı(size=32) }} 
+
+		 {% for error in form.adı.errors %}
+
+			<br><font color="red"> {{ error }}</font>
+
+		 {% endfor%}  </td> 
+
+	     <td> {{ form.s_adı.label }} <br> {{ form.s_adı(size=32) }} </td>
+
+	</tr>
+	
+	<tr> <td> {{ form.tel.label }} <br> {{ form.tel }} </td>
+
+	     <td> {{ form.eposta.label }} <br> {{ form.eposta }} 
+
+		  {% for error in form.eposta.errors %}
+
+			<br><font color="red"> {{ error }}</font>
+
+		 {% endfor%}  
+
+
+	     </td>  
+
+	</tr>
+
+	<tr> <td>{{ form.parola.label }} <br> {{ form.parola }} 
+
+		 {% for error in form.parola.errors %}
+
+			<br><font color="red"> {{ error }}</font>
+
+		 {% endfor%}  
+
+	     </td> 
+
+	     <td>{{ form.cparola.label }} <br> {{ form.cparola }} 
+
+		 {% for error in form.cparola.errors %}
+
+			<br><font color="red"> {{ error }}</font>
+
+		 {% endfor%}  
+
+	     </td> 
+
+	</tr>
+
+	<tr> <td colspan="2" align="center"> {{ form.submit }} </b></td> </tr>
+
+</table>
+
+ 	</form>
+
+	<h3> <a href="{{ url_for('index')}}"> Ana Sayfa </a></h3>
+  </body>
+
+</html>

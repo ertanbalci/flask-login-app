@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html>
+ <head>  </head>
+
+ <body> <form action="" method="POST"> {{ form.csrf_token }} 
+
+	<table border=".5" bgcolor="#FDFEFE" bordercolor="#EBE6F1" cellspacing="5" cellpadding="10">
+
+	<tr> <td colspan="3" align="center"> <b> <font color="red"> {{ islem }} İLAN KAYIT FORMU </font></b></td> </tr>
+
+	<tr> <td colspan="3"> {{ form.başlık.label }} {{ form.başlık }} </td> </tr>
+
+	<tr> <td> {{ form.il.label }}      <br> {{ form.il }}      </td>
+
+             <td> {{ form.ilçe.label }}    <br> {{ form.ilçe }}    </td>
+
+             <td> {{ form.mahalle.label }} <br> {{ form.mahalle }} </td>
+
+	</tr>
+	
+	<tr> <td> {{ form.kat.label }}     <br> {{ form.kat }}     </td>
+
+             <td> {{ form.oda.label }}     <br> {{ form.oda }}     </td>
+
+             <td> {{ form.fiyat.label }}   <br> {{ form.fiyat }}   </td>
+
+	</tr>
+
+        <tr> <td colspan="3"> {{ form.ilan.label }} <br> {{ form.ilan }} </td> </tr>
+
+	<tr> <td colspan="3" align="center"> {{ form.submit }} </td> </tr>
+
+	</table>
+
+ 	</form>
+	<h3> <a href="{{ url_for('index')}}"> Ana Sayfa </a></h3>
+  </body>
+</html>

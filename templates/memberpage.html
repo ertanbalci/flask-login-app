@@ -1,0 +1,78 @@
+﻿<html>
+<head></head>
+<body>
+<h2> {{ current_user.adı }} {{ current_user.s_adı }}</h2>
+
+<h3>İlanlarım: </h3>
+
+<table border=".5" bgcolor="#FDFEFE" bordercolor="#EBE6F1" cellspacing="5" cellpadding="10">
+<h6>
+	<tr>
+		<th>id</th>
+		<th>İşlem</th>
+		<th>İlan Tarihi</th>
+		<th>İan Başlığı</th>
+		<th>İl</th>
+		<th>İlçe / Marka</th>
+		<th>Mahalle / Model</th>
+		<th>Kat / Yıl</th>
+		<th>Oda / KM</th>
+		<th>Fiyat</th>
+		<th>Foto1</th>
+		<th>Foto2</th>
+		<th>Foto3</th>
+		<th>Seç</th>
+	</tr>
+
+	{% for ilan in ilanlarım %}
+
+	<tr>
+
+		<td> {{ ilan.id }}</td>
+		<td> {{ ilan.işlem }}</td>
+		<td> {{ ilan.ilantarihi }}</td>
+		<td> {{ ilan.başlık }}</td>
+		<td> {{ ilan.il }}</td>
+		<td> {{ ilan.ilçe_marka }}</td>
+		<td> {{ ilan.mah_model }}</td>
+		<td> {{ ilan.kat_yıl }}</td>
+		<td> {{ ilan.oda_km }}</td>
+		<td> {{ ilan.fiyat }}</td>
+		<td> {% if ilan.foto1 %}
+				{{ ilan.foto1 }}
+		     {% else %}
+				<a href ="{{ url_for('foto_ekle', ilanno=ilan.id, no=1) }}">Ekle</a>
+		     {% endif %}
+		</td>
+		<td> {% if ilan.foto2 %}
+				{{ ilan.foto2 }}
+		     {% else %}
+				<a href ="{{ url_for('foto_ekle', ilanno=ilan.id, no=2) }}">Ekle</a>
+		     {% endif %}
+		</td>
+		<td> {% if ilan.foto3 %}
+				{{ ilan.foto3 }}
+		     {% else %}
+				<a href ="{{ url_for('foto_ekle', ilanno=ilan.id, no=3) }}">Ekle</a>
+		     {% endif %}
+		</td>
+
+		<td><a href ="{{ url_for('ilan_sil', ilanno=ilan.id) }}">Sil</a></td>		
+	</tr>
+
+	{% endfor %}
+</h6>
+</table>
+
+<h3>
+
+<p> <a href ="{{ url_for('daire_ilan', islem='SATILIK DAİRE') }}">Satılık daire ilanı</a> vermek istiyorum. </p>
+<p> <a href ="{{ url_for('daire_ilan', islem='KİRALIK DAİRE') }}">Kiralık daire ilanı</a> vermek istiyorum. </p>
+<p> <a href ="{{ url_for('arac_ilan', islem='SATILIK ARAÇ') }}">Satılık araç ilanı</a> vermek istiyorum. </p>
+<p> Ana sayfaya dönmek için <a href ="{{ url_for('index') }}"> tıklayın </a></p>
+<p> Hesabınızdan çıkmak için <a href ="{{ url_for('logout') }}"> tıklayın </a></p>
+
+</h3>
+
+</body>
+</html>

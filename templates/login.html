@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html>
+  <head>  </head>
+ <body> <center><form action="" method="POST"> {{ form.csrf_token }} 
+
+	<table border=".5" bgcolor="#FDFEFE" bordercolor="#EBE6F1" cellspacing="5" cellpadding="10">
+
+	<tr> <td align="center"> <b> <font color="red"> LOGIN </font></b></td> </tr>
+
+	<tr> <td> {{ form.eposta.label }} <br> {{ form.eposta }} 
+
+		  {% for error in form.eposta.errors %}
+
+			<br><font color="red"> {{ error }}</font>
+
+		 {% endfor%}  
+
+	     </td>  
+	</tr>
+	<tr> <td>{{ form.parola.label }} <br> {{ form.parola }} 
+
+		 {% for error in form.parola.errors %}
+
+			<br><font color="red"> {{ error }}</font>
+
+		 {% endfor%}  
+
+	     </td> 
+	     
+	</tr>
+
+	<tr> <td align="center"> {{ form.submit }} </b></td> </tr>
+
+        </table>
+
+ 	</form>
+
+	<h3> <a href="{{ url_for('index')}}"> Ana Sayfa </a></h3>
+  </center>
+</body>
+</html>

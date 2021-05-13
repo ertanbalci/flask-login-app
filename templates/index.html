@@ -1,0 +1,92 @@
+﻿<html>
+
+ <head> <title> Satılık / Kiralık Daireler Araçlar </title>
+
+  <style type="text/css">
+
+   .cerceve  { width: 100%;               margin:auto; }
+   .sol_bant { width:  75%;  height:15%; background-color:#E3F2FD; float:left; }
+   .sag_bant { width:  25%;  height:15%; background-color:#E3F2FD; float:right;}
+   .sol_yan  { width:  15%; height: 85%; background-color:#A7FFEB; float:left;}
+   .sag_yan  { width:  85%; height: 85%; background-color:#B9F6CA; float:right; overflow:scroll;}
+
+  </style>
+
+ </head>
+
+ <body>
+
+   <div class="cerceve"> 
+ 
+	<div class="sol_bant"> <h3> <font color="blue">Satılık / Kiralık Daireler Araçlar</font> </h3> </div>
+
+	<div class="sag_bant"> <h3> {{ user}} <br>
+
+                                    {% if user == "Misafir" %}
+
+                                            Üye isen <a href = "{{ url_for('login') }}">giriş yap.</a> <br> 
+
+				            <a href = "{{ url_for('new_account') }}">Üye ol.</a><br>
+
+				    {% else %}
+
+                                           <a href = "{{ url_for('member_page') }}">İlanlarım.</a><br> 
+
+					   <a href = "{{ url_for('logout') }}">Çıkış yap.</a><br> 
+
+				    {% endif %}
+
+        </h3> </div>
+
+	<div class="sol_yan">  <h3> 
+
+			<a href = "{{ url_for('ilanlar', search='SATILIK DAİRE') }}">Satılık Daire ilanları</a><br><br> 
+			<a href = "{{ url_for('ilanlar', search='KİRALIK DAİRE') }}">Kiralık Daire ilanları</a><br><br>
+			<a href = "{{ url_for('ilanlar', search='SATILIK ARAÇ') }}" >Satılık Araç ilanları</a><br><br>
+        </h3> </div>
+
+	<div class="sag_yan">  <h3> <font color="blue"> {{ search }} </font> </h3> 
+
+	<h4>
+
+	<table border=".5" bgcolor="#FDFEFE" bordercolor="#EBE6F1" cellspacing="5" cellpadding="10">
+
+	<tr>
+
+	{% if search == "SATILIK ARAÇ" %}
+
+		<th>İlan Tarihi</th> <th>Başlık</th> <th>İl</th> <th>Marka</th> <th>Model</th> <th>Yıl</th> <th>Fiyat</th>
+
+	{% else %}
+
+		<th>İlan Tarihi</th> <th>Başlık</th> <th>İl</th> <th>İlçe</th> <th>Mahalle</th> <th>Kat</th> <th>Fiyat</th>
+
+	{% endif%}
+
+        </tr>
+
+	{% for m in mems %}
+
+  	  <tr>
+
+		<td> {{ m [0] }} </td>
+
+		<td> <a href="{{ url_for('detay', search=search, ilan_id=m[7], mem_id=m[8]) }}" target="_blank"> {{ m[1] }} </a></td>
+
+		<td> {{ m [2] }} </td> <td> {{ m [3] }} </td> <td> {{ m [4] }} </td> <td> {{ m [5] }} </td> <td> {{ m [6] }} </td>
+	  </tr>
+
+	{% endfor %}
+
+	</table>        
+
+
+	</h4>
+
+	</div>	
+
+   </div>
+ 
+ </body>
+
+</html> 

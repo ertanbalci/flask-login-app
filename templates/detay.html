@@ -1,0 +1,40 @@
+﻿<html>
+<body><h3>
+
+ {{ search }}
+
+<table border=".5" bgcolor="#FDFEFE" bordercolor="#EBE6F1" cellspacing="5"cellpadding="10">
+
+<tr> <td colspan="6"> {{ ilan.başlık }} </td> </tr>
+
+<tr> <td colspan="2"> <img src="{{ url_for('static', filename='uploaded_images/'+ilan.foto1) }}" width="250px" height="200px" > </td>
+     <td colspan="2"> <img src="{{ url_for('static', filename='uploaded_images/'+ilan.foto2) }}" width="250px" height="200px"> </td>
+     <td colspan="2"> <img src="{{ url_for('static', filename='uploaded_images/'+ilan.foto3) }}" width="250px" height="200px"> </td>
+</tr>
+
+<tr> <td colspan="2"> {{ilan.foto1 }} </td>
+     <td colspan="2"> {{ilan.foto2 }} </td>
+     <td colspan="2"> {{ilan.foto3 }} </td>
+</tr>
+<tr> <td>İlan Tarihi</td> <td> {{ ilan.ilantarihi }}</td> <td colspan="2" rowspan="7" bgcolor="#EBE6F1"></td> <td><b> İlan Veren<b></td></tr>
+<tr> <td>İl         </td> <td> {{ ilan.il         }}</td>                                         <td> {{ mem.adı}} {{ mem.s_adı }}</td></tr>
+
+{% if ilan.işlem=="SATILIK ARAÇ" %}
+	<tr> <td> Marka </td> <td> {{ ilan.ilçe_marka }} </td> <td> Tel No : {{ mem.tel }} </td> </tr>
+	<tr> <td> Model </td> <td> {{ ilan.mah_model  }} </td> <td> E-posta: {{ mem.eposta }} </td> </tr>
+	<tr> <td> Yıl   </td> <td> {{ ilan.kat_yıl    }} </td> </tr>
+	<tr> <td> KM    </td> <td> {{ ilan.oda_km     }} </td> </tr>
+{% else %}
+	<tr> <td> İlçe   </td> <td> {{ ilan.ilçe_marka }} </td> <td> Tel No : {{ mem.tel }} </td> </tr>
+	<tr> <td> Mahalle</td> <td> {{ ilan.mah_model  }} </td> <td> E-posta: {{ mem.eposta }} </td> </tr>
+	<tr> <td> Kat    </td> <td> {{ ilan.kat_yıl    }} </td> </tr>
+	<tr> <td> Oda    </td> <td> {{ ilan.oda_km     }} </td> </tr>
+{% endif %}
+	<tr> <td> Fiyat  </td> <td> {{ ilan.fiyat     }} </td> </tr>
+
+<tr> <td colspan="6"> {{ ilan.açıklama }} </td> </tr>
+
+</table>
+</h3>
+</body>
+<html>
